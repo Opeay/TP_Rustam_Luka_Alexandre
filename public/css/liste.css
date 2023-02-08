@@ -1,0 +1,30 @@
+*{
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.list_bouton{
+    display:flex;
+    justify-content: space-between;
+}
+.list_art{
+    width:100%;
+    border-collapse: collapse;
+}
+.list_art tr th {
+    background-color: navy;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+}
+
+.btn{
+    width:150px;
+    line-height: 50px;
+    background-color: navy;
+    color:white;
+    font-weight: bold;
+    margin: 10px 0;
+    border-radius: 10px;
+    font-size: 1.25em;
+    cursor: pointer;
+}

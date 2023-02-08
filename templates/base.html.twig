@@ -1,19 +1,91 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
-        {% endblock %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{%block title%}Formation CDA{%endblock%}</title>
+    <link rel="stylesheet" href="{{asset('bootstrap-5.0.2-dist/css/bootstrap.css')}}">
+    <link rel="stylesheet" href="{{asset('fontawesome/css/all.css')}}">
+    <link rel="stylesheet" href="{{asset('bootstrap-5.0.2-dist/css/bootstrap-v1-9-0-datepicker.css')}}">
+    <link rel="stylesheet" href="{{asset('css/style_001.css')}}">
+    <script src="{{asset('js/jquery.js')}}"></script>
+</head>
+<body>
+<div class="container-fluid " style="padding:0">
+        <nav id='entete' class="navbar navbar-expand-md bg-dark text-light fixed-top d-print-none">
+            <a href="{{path("app_accueil")}}"><i class="fa fa-graduation-cap fa-3x text-light m-2"></i></a>
+            {# <a href="" class="navbar-toggler" data-bs-toggle="collapse" >
+                <i class="fa fa-bars fa-2x text-light"></i></a> #}
+            <div class="collapse navbar-collapse" id="nav">
+                <ul class="navbar-nav px-4">
+                    <li class="nav-item"><a href="{{path("app_cursus_index")}}" class="nav-link text-light">Formations</a></li>
+                    <li class='nav-item'><a href='' class='nav-link text-light'>Informations</a></li>
+                    <li class="nav-item"><a href="" class="nav-link text-light">Groupe User</a></li>   
+                    <li class="nav-item"><a href="{{path('app_user_index')}}" class="nav-link text-light">User</a></li>
+                    <li class="nav-item"><a href="" class="nav-link text-light">Role</a></li>
+                    <li class="nav-item"><a href="" class="nav-link text-light">Groupe User</a></li>         
+                    <li class='nav-item'><a href='' class='nav-link text-light'>Parametres</a></li>                           
+                </ul>
+            </div>
+            <div>
+                <a href="{{path('app_login')}}" class="text-light btn btn-md btn-secondary ">Connexion</a>
+                <a href="{{path('app_register')}}"class="text-light btn btn-md btn-secondary  mx-3">S'inscrire</a>
+            </div>
+        </nav>
+       <div id="main" style="margin-top:65px" class="row">
+           <div id="section" class="col-12 d-flex justify-content-center mt-5">
+               <!--?=$content?-->
+               {%block body%}{%endblock%}
+           </div>       
+       </div> 
+    <div id="footer"class="d-flex justify-content-between align-items-center d-print-none p-5 w-100"> 
+        <h3 class="text-light px-4">TechGenius Academy</h3>
+        <span class=" px-5 text-grey">© 2000-2023, All Rights Reserved</span>
+    </div>
+</div>
 
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
-</html>
+<script src="{{asset('js/myScript.js')}}"></script>
+<script>
+
+(function(){
+
+  var doc = document.documentElement;
+  var w = window;
+  var prevScroll = w.scrollY || doc.scrollTop;
+  var curScroll;
+  var direction = 0;
+  var prevDirection = 0;
+  var header = document.getElementById('entete');
+  var checkScroll = function() {
+
+    curScroll = w.scrollY || doc.scrollTop;
+    if (curScroll > prevScroll) { 
+      //scrolled up
+      direction = 2;
+    }
+    else if (curScroll < prevScroll) { 
+      //scrolled down
+      direction = 1;
+    }
+
+    if (direction !== prevDirection) {
+      toggleHeader(direction, curScroll);
+    }
+    
+    prevScroll = curScroll;
+  };
+
+  var toggleHeader = function(direction, curScroll) {
+    if (direction === 2 && curScroll > 80) { 
+      header.classList.add('hide');
+      prevDirection = direction;
+    }
+    else if (direction === 1) {
+      header.classList.remove('hide');
+      prevDirection = direction;
+    }
+  };
+  window.addEventListener('scroll', checkScroll);
+})();
+</script>

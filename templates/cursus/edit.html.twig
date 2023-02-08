@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Cursus{% endblock %}
+
+{% block body %}
+<div class="container d-flex justify-content-between  flex-wrap px-4">
+<div class="w-100 text-center text-light">
+ </div>
+    <div class="cards w-100">
+        <div class=" box">
+            <div class="content text-light">
+                <h1 class="m-3">Modifier {{cursu.libelle}}</h1>
+                 {{ include('cursus/_form.html.twig', {'button_label': 'Modifier'}) }}
+                <div class='d-flex w-100 justfify-content-center'>
+                    {{ include('cursus/_delete_form.html.twig') }} 
+                </div>
+            </div>
+            
+        </div>
+        
+    </div>
+</div>
+{% endblock %}
