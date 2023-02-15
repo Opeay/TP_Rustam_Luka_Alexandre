@@ -5,7 +5,9 @@
 {% block body %}
 <div class="d-flex justify-content-center flex-column">
     <h1 class="text-light text-center p-5">NOS FORMATIONS</h1>
+    {% if is_granted('ROLE_ADMIN') %}
     <a href="{{ path('app_cursus_new') }}" class="btn btn-small btn-secondary auto">+</a>
+    {% endif  %}
     <div class="container d-flex justify-content-between  flex-wrap p-4">
             {% for cursu in cursuses %}
         <div class="cards">

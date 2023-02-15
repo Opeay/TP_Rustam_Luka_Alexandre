@@ -21,11 +21,10 @@
                 <ul class="navbar-nav px-4">
                     <li class="nav-item"><a href="{{path("app_cursus_index")}}" class="nav-link text-light">Formations</a></li>
                     <li class='nav-item'><a href='' class='nav-link text-light'>Informations</a></li>
-                    <li class="nav-item"><a href="" class="nav-link text-light">Groupe User</a></li>   
-                    <li class="nav-item"><a href="{{path('app_user_index')}}" class="nav-link text-light">User</a></li>
-                    <li class="nav-item"><a href="" class="nav-link text-light">Role</a></li>
-                    <li class="nav-item"><a href="" class="nav-link text-light">Groupe User</a></li>         
-                    <li class='nav-item'><a href='' class='nav-link text-light'>Parametres</a></li>                           
+                    {%if is_granted('ROLE_ADMIN')%}
+                    <a href="{{path('app_user_index')}}" class="nav-link text-light">User</a>
+                    <a href="{{path('app_role_index')}}" class="nav-link text-light">Role</a>
+                    {% endif %}                        
                 </ul>
             </div>
             <div>

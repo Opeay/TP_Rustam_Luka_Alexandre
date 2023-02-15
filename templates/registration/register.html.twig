@@ -3,15 +3,18 @@
 {% block title %}S'enregistrer{% endblock %}
 
 {% block body %}
-    <h1 class="text-light">S'enregistrer</h1>
+
+<div class="center text-danger">
+    <h1 class="text-light m-2">Creer un compte</h1>
 
     {{ form_start(registrationForm) }}
         {{ form_row(registrationForm.username) }}
         {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
+            label: 'Mot de passe'
         }) }}
         {{ form_row(registrationForm.agreeTerms) }}
 
-        <button type="submit" class="btn btn-md btn-secondary">Register</button>
+        <button type="submit" class="btn btn-md btn-secondary">S'enregistrer</button>
     {{ form_end(registrationForm) }}
+</div>
 {% endblock %}

@@ -1,8 +1,10 @@
 {% extends 'base.html.twig' %}
 
+
 {% block title %}Edit Cursus{% endblock %}
 
 {% block body %}
+{% if is_granted('ROLE_ADMIN') %}
 <div class="container d-flex justify-content-between  flex-wrap px-4">
 <div class="w-100 text-center text-light">
  </div>
@@ -20,4 +22,5 @@
         
     </div>
 </div>
+{% endif %}
 {% endblock %}

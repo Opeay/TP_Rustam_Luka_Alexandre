@@ -14,7 +14,9 @@
                 <span class="text-light">prix : {{cursu.prixCursus}} €</span>
                 <div class="d-flex justify-content-between my-4">
                     <a href="{{ path('app_cursus_index') }}" class="btn btn-md btn-primary m-3">Retour</a>
+                    {% if is_granted('ROLE_ADMIN')%}
                     <a href="{{ path('app_cursus_edit', {'id': cursu.id}) }}" class="btn btn-md btn-primary m-3">Modifier</a>   
+                    {% endif %}
                 </div>
                 {{ include('cursus/_delete_form.html.twig') }}
             </div>
