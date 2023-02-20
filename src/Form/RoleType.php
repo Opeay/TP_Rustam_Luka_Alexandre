@@ -14,12 +14,12 @@ class RoleType extends AbstractType
     {
         $builder
             ->add('rang',TextType::class,[
-                'label'=>'Nom de compte:',
+                'label'=>'Rang :',
                 'label_attr'=>['class'=>'lab30 text-light'],
                 'attr'=>['class'=>'form-control my-2 w-20 auto']
             ])
             ->add('libelle',TextType::class,[
-                'label'=>'Nom de compte:',
+                'label'=>'Libelle :',
                 'label_attr'=>['class'=>'lab30 text-light'],
                 'attr'=>['class'=>'form-control my-2 w-20 auto']
             ])

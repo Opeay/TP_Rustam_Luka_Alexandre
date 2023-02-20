@@ -3,9 +3,9 @@
 {% block title %}Nouvel Utilisateur{% endblock %}
 
 {% block body %}
+<div class=" text-light w-90 align-items-center center">
     <h1>Creer un nouvel utilisateur</h1>
-
     {{ include('user/_form.html.twig') }}
-
-    <a href="{{ path('app_user_index') }}">Retour à liste</a>
+    <a href="{{ path('app_user_index') }}" class="btn btn-small btn-secondary my-5">Retour à liste</a>
+</div>
 {% endblock %}

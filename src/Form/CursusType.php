@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Cursus;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -15,8 +16,8 @@ class CursusType extends AbstractType
         $builder
             ->add('libelle',TextType::class,[
                 'label'=>'Libellé',
-                'label_attr'=>['class'=>'lab20'],
-                'attr'=>['class'=>'form-control w-100 m-2']
+                'label_attr'=>['class'=>'lab30 text-light'],
+                'attr'=>['class'=>'form-control my-2 w-20 auto']
             ])
             ->add('typeCursus', ChoiceType::class, [
                 'choices'  => [
@@ -24,18 +25,18 @@ class CursusType extends AbstractType
                     'En alternance' => false,
                 ],
                 'label'=>'Formation',
-                'label_attr'=>['class'=>'lab20'],
-                'attr'=>['class'=>'form-control w-100 m-2']
+                'label_attr'=>['class'=>'lab30 text-light'],
+                'attr'=>['class'=>'form-control my-2 w-20 auto']
             ])
-            ->add('descriptionCursus',TextType::class,[
+            ->add('descriptionCursus',CKEditorType::class,[
                 'label'=>'Description',
-                'label_attr'=>['class'=>'lab20'],
-                'attr'=>['class'=>'form-control w-100 m-2']
+                'label_attr'=>['class'=>'lab30 text-light'],
+                'attr'=>['class'=>'form-control my-2 w-20 auto']
             ])
             ->add('prixCursus',TextType::class,[
                 'label'=>'Prix Cursus',
-                'label_attr'=>['class'=>'lab20'],
-                'attr'=>['class'=>'form-control w-100 m-2']
+                'label_attr'=>['class'=>'lab30 text-light mt-3'],
+                'attr'=>['class'=>'form-control my-3 w-20 auto']
             ])
         ;
     }

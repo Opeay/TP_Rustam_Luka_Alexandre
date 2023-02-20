@@ -1,6 +1,6 @@
 {% if is_granted('ROLE_ADMIN')%}
 <form method="post" action="{{ path('app_cursus_delete', {'id': cursu.id}) }}" onsubmit="return confirm('Etes vous sur de vouloir supprimer cette formation ?');">
     <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ cursu.id) }}">
-    <button class="btn btn-md btn-danger">Supprimer</button>
+    <button class="btn btn-md btn-secondary">Supprimer</button>
 </form>
 {% endif %}

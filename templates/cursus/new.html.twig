@@ -3,20 +3,8 @@
 {% block title %}New Cursus{% endblock %}
 
 {% block body %}
-<div class="container d-flex justify-content-between  flex-wrap p-4">
-<div class="w-100 text-center text-light">
-
- </div>
-    <div class="cards w-100">
-        <div class=" box">
-            <div class="content text-light">
-                <div class='d-flex'>
-                    {{ include('cursus/_form.html.twig') }}
-                </div>
-            </div>
-            
-        </div>
-        
-    </div>
+<div class=" text-light w-90 align-items-center center">
+    <h1>Creer une Formation</h1>
+    {{ include('cursus/_form.html.twig') }}
 </div>
 {% endblock %}

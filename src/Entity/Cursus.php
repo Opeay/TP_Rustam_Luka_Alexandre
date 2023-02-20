@@ -23,8 +23,10 @@ class Cursus
     #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2, nullable: true)]
     private ?string $prixCursus = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $descriptionCursus = null;
+
+
 
     public function getId(): ?int
     {

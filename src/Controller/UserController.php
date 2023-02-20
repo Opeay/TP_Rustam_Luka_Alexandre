@@ -28,10 +28,32 @@ class UserController extends AbstractController
     }
 
     #[Route('/new', name: 'app_user_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, UserRepository $userRepository): Response
+    public function new(EntityManagerInterface $em,Request $request, UserRepository $userRepository): Response
     {
         $user = new User();
+        
+        $roles=$em->getRepository(Role::class)->findBy([],['rang'=>'asc']);
+        
+        foreach($roles as $role){
+            $libelle=$role->getLibelle();
+            $choice_roles[$libelle]=$libelle;
+        }
+        $choice_roles=[];
+
         $form = $this->createForm(UserType::class, $user);
+        $form
+        ->add('roles',ChoiceType::class,[
+            'multiple'=>true,
+            'choices'=>$choice_roles,
+            'label'=>'Roles',
+            'attr'=>['class'=>'form-control my-2 w-20 auto text-center']
+            ])
+        ->add('password',PasswordType::class,[
+            'mapped'=>false,
+            'label'=>'Mot de passe',
+            'required'=>false,
+            'attr'=>['class'=>'form-control my-2 w-20 auto text-center ','placeholder'=>"Ne rien taper pour garder l'ancien"]
+        ]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -75,13 +97,13 @@ class UserController extends AbstractController
             'multiple'=>true,
             'choices'=>$choice_roles,
             'label'=>'Roles',
-            'attr'=>['class'=>'form-control ']
+            'attr'=>['class'=>'form-control my-2 w-20 auto text-center']
             ])
         ->add('password',PasswordType::class,[
             'mapped'=>false,
             'label'=>'Mot de passe',
             'required'=>false,
-            'attr'=>['class'=>'form-control ','placeholder'=>"Ne rien taper pour garder l'ancien"]
+            'attr'=>['class'=>'form-control my-2 w-20 auto text-center ','placeholder'=>"Ne rien taper pour garder l'ancien"]
         ]);
         $form->handleRequest($request);
 
@@ -102,6 +124,7 @@ class UserController extends AbstractController
             'user' => $user,
             'form' => $form,
         ]);
+
     }
 
     #[Route('/{id}', name: 'app_user_delete', methods: ['POST'])]

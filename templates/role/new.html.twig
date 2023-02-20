@@ -3,9 +3,9 @@
 {% block title %}Nouveau Role{% endblock %}
 
 {% block body %}
-    <h1>Creer un nouveau role</h1>
-
-    {{ include('role/_form.html.twig') }}
-
-    <a href="{{ path('app_role_index') }}">Retour à la liste</a>
+<div class=" text-light w-90 align-items-center center">
+    <h1>Creer un nouveau Role</h1>
+        {{ include('role/_form.html.twig') }}
+    <a href="{{ path('app_role_index') }}" class="btn btn-small btn-secondary my-3 ">Retour à la liste</a>
+</div>
 {% endblock %}

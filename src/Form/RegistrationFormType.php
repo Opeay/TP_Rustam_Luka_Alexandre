@@ -20,7 +20,7 @@ class RegistrationFormType extends AbstractType
     {
         $builder
             ->add('username', TextType::class,[
-                'label'=>'Nom de compte:',
+                'label'=>'Nom de compte',
                 'label_attr'=>['class'=>'lab30 text-light'],
                 'attr'=>['class'=>'form-control my-2']
             ])
