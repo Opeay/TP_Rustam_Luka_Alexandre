@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        th,td{
+            border:1px solid gray;
+        }
+        .w-20{width:20%;}
+        .w-60{width:60%;}
+        .center{text-align:center;}
+    </style>
+</head>
+<body>
+    <div class="w-100 auto">
+        <h1 class="text-center">Liste des roles</h1>
+    </div>
+    <table style="border-collapse:collapse;">
+        <tr>
+            <th class="w-20 center">Rang</th>
+            <th class="w-60 center">Libelle</th>
+        </tr>
+        {%for role in roles%}
+            <tr>
+                <td>{{role.rang}}</td>
+                <td>{{role.Libelle}}</td>               
+            </tr>
+
+
+        {%endfor%}
+    </table>
+</body>
+</html>
