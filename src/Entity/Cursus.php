@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\CursusRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use App\Entity\GroupeCursus;
 
 #[ORM\Entity(repositoryClass: CursusRepository::class)]
 class Cursus
@@ -79,5 +80,10 @@ class Cursus
         $this->descriptionCursus = $descriptionCursus;
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->libelle;
     }
 }

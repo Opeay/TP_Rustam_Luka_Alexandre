@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}GroupeCursus{% endblock %}
+
+{% block body %}
+<div class="center text-light w-90">
+    <h1>{{ groupe_cursu.numGroupeCursus }}</h1>
+
+    <table class="table text-light">
+        <div>
+            <div>
+                <h3>Id</h3>
+                <div>{{ groupe_cursu.id }}</div>
+            </div>
+            <div>
+                <h3>Numéro</h3>
+                <div>{{ groupe_cursu.numGroupeCursus }}</div>
+            </div>
+            <div>
+                <h3>Cursus</h3>
+                <div>{{ cursus.1 }}</div>
+            </div>
+            <div>
+                <h3>Date Debut</h3>
+                <div>{{ groupe_cursu.dateDebutGroupeCursus ? groupe_cursu.dateDebutGroupeCursus|date('Y-m-d') : '' }}</div>
+            </div>
+            <div>
+                <h3>Date Fin</h3>
+                <div>{{ groupe_cursu.dateFinGroupeCursus ? groupe_cursu.dateFinGroupeCursus|date('Y-m-d') : '' }}</div>
+            </div>
+        </div>
+    </table>
+
+    <a href="{{ path('app_groupe_cursus_index') }}" class="btn btn-small btn-secondary mt-3">Retour à la liste</a>
+
+    <a href="{{ path('app_groupe_cursus_edit', {'id': groupe_cursu.id}) }}" class="btn btn-small btn-secondary mt-3">Modifier</a>
+
+    {{ include('groupe_cursus/_delete_form.html.twig') }}
+</div>
+{% endblock %}

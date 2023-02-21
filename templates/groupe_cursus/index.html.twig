@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}GroupeCursus index{% endblock %}
+
+{% block body %}
+<div class="center text-light w-90">
+    <h1>GroupeCursus index</h1>
+
+    <a href="{{ path('app_groupe_cursus_new') }}" class="btn btn-small btn-secondary my-3">Creer un nouveau Groupe cursus</a>
+
+    <table class="table text-light">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Numéro</th>
+                <th>Cursus</th>
+                <th>Date Debut</th>
+                <th>Date Fin</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for groupe_cursu in groupe_cursuses %}
+            <tr>
+                <td>{{ groupe_cursu.id }}</td>
+                <td>{{ groupe_cursu.numGroupeCursus }}</td>
+                <td>{{ cursus.1}}</td>
+                <td>{{ groupe_cursu.dateDebutGroupeCursus ? groupe_cursu.dateDebutGroupeCursus|date('Y-m-d') : '' }}</td>
+                <td>{{ groupe_cursu.dateFinGroupeCursus ? groupe_cursu.dateFinGroupeCursus|date('Y-m-d') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_groupe_cursus_show', {'id': groupe_cursu.id}) }}" class="btn btn-small btn-secondary mt-3">Afficher</a>
+                    <a href="{{ path('app_groupe_cursus_edit', {'id': groupe_cursu.id}) }}" class="btn btn-small btn-secondary mt-3">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">Aucun élement trouvé</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+    
+{% endblock %}

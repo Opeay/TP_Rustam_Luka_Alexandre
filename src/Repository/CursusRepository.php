@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Cursus;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use App\Entity\GroupeCursus;
 
 /**
  * @extends ServiceEntityRepository<Cursus>

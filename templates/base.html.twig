@@ -38,6 +38,9 @@
 
 (function(){
 
+  $('.datepicker').datepicker();
+
+
   var doc = document.documentElement;
   var w = window;
   var prevScroll = w.scrollY || doc.scrollTop;
@@ -76,4 +79,5 @@
   };
   window.addEventListener('scroll', checkScroll);
 })();
+
 </script>
