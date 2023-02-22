@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit GroupeCursus{% endblock %}
+
+{% block body %}
+<div class=" text-light w-90 align-items-center center">
+    <h1>Modifier Groupe cursus</h1>
+
+    {{ include('groupe_cursus/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_groupe_cursus_index') }}" class="btn btn-small btn-secondary mt-3">Retour à la liste</a>
+
+    {{ include('groupe_cursus/_delete_form.html.twig') }}
+</div>
+{% endblock %}

@@ -5,7 +5,9 @@
 {% block body %}
 <div class="d-flex justify-content-center flex-column">
     <h1 class="text-light text-center p-5">NOS FORMATIONS</h1>
-    <a href="{{ path('app_cursus_new') }}" class="btn btn-small btn-secondary auto">+</a>
+    {% if is_granted('ROLE_ADMIN') %}
+    <a href="{{ path('app_cursus_new') }}" class="btn btn-small btn-secondary auto">Creer une formation</a>
+    {% endif  %}
     <div class="container d-flex justify-content-between  flex-wrap p-4">
             {% for cursu in cursuses %}
         <div class="cards">
@@ -15,7 +17,7 @@
                 <div class="content">
                     <h3>{{ cursu.libelle }}</h3>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, totam velit? Iure nemo labore inventore?</p>
-                    <a href="{{ path('app_cursus_show', {'id': cursu.id}) }}" class="btn btn-md btn-light text-dark">infos</a>
+                    <a href="{{ path('app_cursus_show', {'id': cursu.id}) }}" class="btn btn-md btn-light text-dark">Voir plus</a>
                 </div>
             
             </div>
@@ -24,85 +26,4 @@
             {% endfor %}
     </div> 
 </div>  
-
-
-
-
-
-
-
-
-
-    {# <div class="container">
-        <div class="card">
-            <div class="contentBx">
-            <h2>Dev Web</h2>
-            <div class="size">
-                <h3>About :</h3>
-                <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet totam quisquam aut eos similique aperiam soluta ad unde quos nihil alias obcaecati iure, id iste perspiciatis maiores facilis! Sint, ipsam.</span>
-            </div>
-            <div class="color">
-                <h3>Price :</h3>
-                <span>10000€</span>
-            </div>
-            <a href="#">Informations</a>
-            </div>
-        </div>
-</div> #}
-    
-    
-{#     
-    
-
-        <a href="{{ path('app_cursus_new') }}" class="btn btn-small btn-purple w-10">Creer une formation</a>
-
-            <div class="container-fluid d-flex justify-content-between  flex-wrap p-4">
-                {% for cursu in cursuses %}
-                    <div class="card m-5 shadow-lg  rounded">
-                        <div class="contentBx">
-                            <h2>{{ cursu.libelle }}</h2>
-                            <a href="{{ path('app_cursus_show', {'id': cursu.id}) }}" class="my-3">Informations</a>
-                            </div>
-                        </div>
-                {% endfor %}
-            </div> #}
-
-   
-
-
-
-     
-
-
-    {# <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Libelle</th>
-                <th>TypeCursus</th>
-                <th>PrixCursus</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-
-            <tr>
-                <td>{{ cursu.id }}</td>
-                <td>{{ cursu.libelle }}</td>
-                <td>{{ cursu.typeCursus ? 'Yes' : 'No' }}</td>
-                <td>{{ cursu.prixCursus }}</td>
-                <td>
-                    <a href="{{ path('app_cursus_show', {'id': cursu.id}) }}">show</a>
-                    <a href="{{ path('app_cursus_edit', {'id': cursu.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">no records found</td>
-            </tr>
-        
-        </tbody>
-    </table> #}
-
-    
 {% endblock %}

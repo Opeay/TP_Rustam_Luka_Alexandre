@@ -13,22 +13,10 @@
 </head>
 <body>
 <div class="container-fluid " style="padding:0">
-        <nav id='entete' class="navbar navbar-expand-md bg-dark text-light fixed-top d-print-none">
+        <nav id='entete' class="navbar navbar-expand-md bg-dark text-light d-print-none">
             <a href="{{path("app_accueil")}}"><i class="fa fa-graduation-cap fa-3x text-light m-2"></i></a>
-            {# <a href="" class="navbar-toggler" data-bs-toggle="collapse" >
-                <i class="fa fa-bars fa-2x text-light"></i></a> #}
-            <div class="collapse navbar-collapse" id="nav">
-                <ul class="navbar-nav px-4">
-                    <li class="nav-item"><a href="{{path("app_cursus_index")}}" class="nav-link text-light">Formations</a></li>
-                    <li class='nav-item'><a href='' class='nav-link text-light'>Informations</a></li>
-                    <li class="nav-item"><a href="" class="nav-link text-light">Groupe User</a></li>   
-                    <li class="nav-item"><a href="{{path('app_user_index')}}" class="nav-link text-light">User</a></li>
-                    <li class="nav-item"><a href="" class="nav-link text-light">Role</a></li>
-                    <li class="nav-item"><a href="" class="nav-link text-light">Groupe User</a></li>         
-                    <li class='nav-item'><a href='' class='nav-link text-light'>Parametres</a></li>                           
-                </ul>
-            </div>
-            <div>
+            {{render(path('app_menu_affichage'))}}
+            <div class=" w-100 d-flex justify-content-end">
                 <a href="{{path('app_login')}}" class="text-light btn btn-md btn-secondary ">Connexion</a>
                 <a href="{{path('app_register')}}"class="text-light btn btn-md btn-secondary  mx-3">S'inscrire</a>
             </div>
@@ -49,6 +37,9 @@
 <script>
 
 (function(){
+
+  $('.datepicker').datepicker();
+
 
   var doc = document.documentElement;
   var w = window;
@@ -88,4 +79,5 @@
   };
   window.addEventListener('scroll', checkScroll);
 })();
+
 </script>

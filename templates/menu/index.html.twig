@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Menu index{% endblock %}
+
+{% block body %}
+<div class="center text-light w-90">
+    <h1>Liste Menu</h1>
+    <a href="{{ path('app_menu_new') }}" class="btn btn-small btn-secondary m-4">Creer un nouveau menu</a>
+    <table class="table">
+        <thead class="text-light">
+            <tr>
+                <th>Id</th>
+                <th>Rang</th>
+                <th>Role</th>
+                <th>Libelle</th>
+                <th>Route</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for menu in menus %}
+            <tr class="text-light">
+                <td>{{ menu.id }}</td>
+                <td>{{ menu.rang }}</td>
+                <td>{{ menu.role }}</td>
+                <td>{{ menu.libelle }}</td>
+                <td>{{ menu.route }}</td>
+                <td  class ="d-flex justify-content-around">
+                    <a href="{{ path('app_menu_show', {'id': menu.id}) }}" class="btn btn-small btn-secondary">Afficher</a>
+                    <a href="{{ path('app_menu_edit', {'id': menu.id}) }}" class="btn btn-small btn-secondary">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">Aucun enregistrement</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+{% endblock %}

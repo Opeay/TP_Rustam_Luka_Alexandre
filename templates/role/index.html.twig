@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Role index{% endblock %}
+
+{% block body %}
+<div class="center text-light w-90">
+    <h1>Liste des Roles</h1>
+    <a href="{{ path('app_role_new') }}" class="btn btn-small btn-secondary auto m-4">Creer un Role</a>
+    <a href="{{ path('app_pdf_role') }}" class="btn btn-small btn-secondary auto m-4"> Exporter en PDF</a>
+    <a href="{{ path('app_excel_export_role') }}" class="btn btn-small btn-secondary auto m-4"> Exporter en Excel</a>
+    <table class="table text-light">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Rang</th>
+                <th class="w-60">Libelle</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for role in roles %}
+            <tr>
+                <td>{{ role.id }}</td>
+                <td>{{ role.rang }}</td>
+                <td class="w-60">{{ role.libelle }}</td>
+                <td class ="d-flex justify-content-around">
+                    <a href="{{ path('app_role_show', {'id': role.id}) }}" class="btn btn-small btn-secondary">Afficher</a>
+                    <a href="{{ path('app_role_edit', {'id': role.id}) }}" class="btn btn-small btn-secondary ">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+ </div>   
+{% endblock %}
