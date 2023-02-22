@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}EmailAdresse{% endblock %}
+
+{% block body %}
+    <h1>EmailAdresse</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ email_adresse.id }}</td>
+            </tr>
+            <tr>
+                <th>EmailAdresse</th>
+                <td>{{ email_adresse.EmailAdresse }}</td>
+            </tr>
+            <tr>
+                <th>DateEnreg</th>
+                <td>{{ email_adresse.DateEnreg ? email_adresse.DateEnreg|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>DateFin</th>
+                <td>{{ email_adresse.DateFin ? email_adresse.DateFin|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ email_adresse.Status ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_email_adresse_index') }}">back to list</a>
+
+    <a href="{{ path('app_email_adresse_edit', {'id': email_adresse.id}) }}">edit</a>
+
+    {{ include('email_adresse/_delete_form.html.twig') }}
+{% endblock %}

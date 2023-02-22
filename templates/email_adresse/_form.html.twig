@@ -1,0 +1,5 @@
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+    <a class="btn btn-mx btn-primary m-2" href="{{ path('app_email_adresse_index') }}">Retour à la liste</a>
+    <button class="btn btn-mx btn-success m-2">{{ button_label|default('Submit') }}</button>
+{{ form_end(form) }}

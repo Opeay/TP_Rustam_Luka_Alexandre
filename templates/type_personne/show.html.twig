@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}TypePersonne{% endblock %}
+
+{% block body %}
+    <h1>TypePersonne</h1>
+
+    
+
+    <a href="{{ path('app_type_personne_index') }}">back to list</a>
+
+    <a href="{{ path('app_type_personne_edit', {'id': type_personne.id}) }}">edit</a>
+
+    {{ include('type_personne/_delete_form.html.twig') }}
+{% endblock %}

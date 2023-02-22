@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}EmailAdresse index{% endblock %}
+
+{% block body %}
+<div class="container-fluid col-7"></div>
+    <h1 class="text-center text-info">EmailAdresse index</h1>
+    <a class="btn btn-primary m-4" href="{{ path('app_email_adresse_new') }}">Create new</a>
+    <table class="table text-center text-info">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>EmailAdresse</th>
+                <th>DateEnreg</th>
+                <th>DateFin</th>
+                <th>Status</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for email_adresse in email_adresses %}
+            <tr>
+                <td class="col-1">{{ email_adresse.id }}</td>
+                <td class="col-1">{{ email_adresse.EmailAdresse }}</td>
+                <td class="col-1">{{ email_adresse.DateEnreg ? email_adresse.DateEnreg|date('Y-m-d H:i:s') : '' }}</td>
+                <td class="col-1">{{ email_adresse.DateFin ? email_adresse.DateFin|date('Y-m-d H:i:s') : '' }}</td>
+                <td class="col-1">{{ email_adresse.Status ? 'Yes' : 'No' }}</td>
+                <td class="col-1">
+                    <div class="btn-group">  
+                    <div>
+                        <a class="btn btn-success btn-sm"  href="{{ path('app_email_adresse_show', {'id': email_adresse.id}) }}">show</a>
+                        <a href="{{ path('app_email_adresse_edit', {'id': email_adresse.id}) }}">edit</a>
+                    </div>                      
+                    </div>
+                    </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3" class="text-primary">aucun @dresse enregistré actuellement</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>   
+{% endblock %}

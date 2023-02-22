@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}TypePersonne index{% endblock %}
+
+{% block body %}
+<div class="container-fluid col-7">
+    <h1 class="text-center text-info">TypePersonne index</h1>
+    <a class="btn btn-primary m-4" href="{{ path('app_type_personne_new') }}">Créer nouveau type</a>
+
+    <table class="table text-center text-info ">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Description</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for type_personne in type_personnes %}
+            <tr>
+                <td class="col-1">{{ type_personne.id }}</td>
+                <td class="col-8">{{ type_personne.Description }}</td>
+                <td class="col-2">
+                    <div class="btn-group">  
+                    <div>
+                        <a class="btn btn-success btn-sm" href="{{ path('app_type_personne_edit', {'id': type_personne.id}) }}">Modifier</a>                         </div>
+                        <form method="post" 
+                        action="{{ path('app_type_personne_delete', {'id': type_personne.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ type_personne.id) }}">
+                            <button class="btn btn-danger btn-sm">Supprimer</button>
+                        </form>                    
+                    </div>                      
+                    </div>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3" class="text-primary">aucun type enregistré actuellement</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    
+</div> 
+{% endblock %}
